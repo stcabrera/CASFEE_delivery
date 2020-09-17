@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../index.css';
+import '../App.css';
 import App from '../App';
 
 
@@ -8,7 +8,13 @@ function Orders() {
     return(
         <div>
             <h1>Orders</h1>
-        </div>
+               <div className="flex">
+                <div id="a_Row">aa</div>
+                <div id="b_Row">bb</div>
+                <div id="c_Row">cc</div>
+            </div>
+            </div>
+        
     )
 }
 
