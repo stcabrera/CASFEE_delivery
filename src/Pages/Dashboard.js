@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../index.css';
-import App from '../App';
+//import App from '../App';
 
 
-function Home() {
+function Dashboard() {
     return(
         <div>
             <h1>Home</h1>
@@ -12,4 +11,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default Dashboard;

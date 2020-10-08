@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import '../App.css';
-import App from '../App';
+//import App from '../App';
 
 
 function Orders() {
     return(
         <div>
-            <h1>Orders</h1>
                <div className="flex">
                 <div id="a_Row">aa</div>
                 <div id="b_Row">bb</div>

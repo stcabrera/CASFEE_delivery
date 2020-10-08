@@ -32,6 +32,9 @@ function Navigation() {
                         onClick={() => setShowMenu(false)}
                     >
                         <ul>
+                        <li className="navItem">
+                                <Link to="/" >Dashboard</Link>
+                            </li>
                             <li className="navItem">
                                 <Link to="orders" >Orders</Link>
                             </li>
