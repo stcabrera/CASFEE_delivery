@@ -4,19 +4,24 @@
   padding: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 .flex {
   display: flex;
-  height: calc(100vh - 60px);
 }
 
 #a_Row {
   background: white;
   flex-grow: 1;
+  padding: 10px;
 }
 
 #b_Row {
   background: #F9F9F9;
   flex-grow: 1;
+  padding: 10px;
 }
 
 #c_Row {
@@ -52,16 +57,88 @@ nav {
   top: 60px;
 }
 
-.navItem {
- 
-}
-
 .navItem a {
   text-decoration: none;
   color: #5d5d5d;
   padding: 20px;
   display: block;
 }
+
 .navItem a:hover {
   background: grey;
+}
+
+.Title__Medium {
+  padding: 10px;
+}
+
+.list__Item {
+  display: flex;
+  align-items: center;
+  background: #e8e8e8;
+  padding: 10px;
+  margin-top: 2px;
+}
+
+.avatarSmall {
+  width: 50px;
+  height: 50px;
+  background: grey;
+  border-radius: 50%;
+}
+
+.RowTitle {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add {
+  background: #76d3f7;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.Motorbike {
+  background: rgb(250, 250, 116);
+  background-size: cover;
+  background-image: url(./Images/noun_Scooter_1006120.png);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.Bike {
+  background: rgb(148, 148, 80);
+  background-size: cover;
+  background-image: url(./Images/noun_Bike_1950231.png);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.E-Bike {
+  background: rgb(252, 84, 84);
+  background-size: cover;
+  background-image: url(./Images/noun_e\ bike_1981529.png);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.Car {
+  background: rgb(172, 158, 211);
+  background-image: url(./Images/noun_Car\ Blank_461761.png);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.order__id {
+  background: grey;
+  border-radius: 50%;
+  padding: 5px;
 }

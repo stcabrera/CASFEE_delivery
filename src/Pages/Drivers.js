@@ -1,40 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+//import { Router } from 'react-router-dom';
 import '../App.css';
-import firebase from '../lib/firebase';
+import DriversComponent from '../Components/DriversComponent';
+import RoutesComponent from '../Components/RoutesComponent';
+import RoutesMap from '../Components/RoutesMap';
 
 function Drivers() {
-    const [drivers, setDrivers] = useState([]);
-
-    useEffect(() => {
-        firebase.firestore().collection('Users').onSnapshot((snapshot) => {
-            const newDriver = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-
-            setDrivers(newDriver)
-        })
-    }, [])
 
     return (
 
         <div>
             <div className="flex">
                 <div id="a_Row">
-                    <h2>Drivers</h2>
-                    <ul>
-                        {drivers.map((drivers) =>
-                            <li key={drivers.id}>
-                                {drivers.FirstName}
-                                {drivers.LastName}
-                            </li>
-                        )}
-                    </ul>
-
+                    <DriversComponent />
                 </div>
-                <div id="b_Row">bb</div>
+                <div id="b_Row">
+                    <RoutesComponent />
+                </div>
                 <div id="c_Row"><div className="responsive_map">
-
+                    <RoutesMap />
                 </div>
                 </div>
             </div>
