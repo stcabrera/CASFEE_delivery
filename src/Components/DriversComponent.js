@@ -16,10 +16,7 @@ function DriversComponent() {
     }, [])
 
     return (
-
         <div>
-            <div className="flex">
-                <div id="a_Row">
                 <div className="RowTitle flex">
                 <h2>Drivers</h2>
                         <div className="add">+</div>
@@ -36,13 +33,11 @@ function DriversComponent() {
                                 <div className="Title__Medium">
                                     <p>{drivers.FirstName}</p>
                                     <p>{drivers.LastName}</p>
-                                    </div>
-                                
+                                    </div> 
                             </li>
                         )}
                     </ul>
-                </div>
-            </div>
+
         </div>
     )
 }

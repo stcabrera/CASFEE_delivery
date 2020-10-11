@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: #8f8f8f;
 }
 
 ul {
@@ -12,16 +13,22 @@ ul {
   display: flex;
 }
 
-#a_Row {
-  background: white;
-  flex-grow: 1;
-  padding: 10px;
+.row {
+  box-shadow: 1px 1px 10px #aaaaaa;
+  height: calc(100vh - 60px);
+  width: 300px;
 }
 
-#b_Row {
-  background: #F9F9F9;
-  flex-grow: 1;
-  padding: 10px;
+.a_row {
+  background: white;
+  box-shadow: 1px 1px 10px #aaaaaa;
+  z-index: 999;
+}
+
+.b_row {
+  background: white;
+  box-shadow: 1px 1px 10px #aaaaaa;
+  z-index: 99;
 }
 
 #c_Row {
@@ -31,11 +38,13 @@ ul {
 
 #header {
   height: 60px;
-  box-shadow: 1px 1px 10px grey;
+  box-shadow: 1px 1px 10px #bfbfbf;
   width: 100%;
   position: relative;
   justify-content: space-between;
   padding: 10px;
+  z-index: 9999;
+  background: white;
 }
 
 nav {
@@ -73,11 +82,9 @@ nav {
 }
 
 .list__Item {
-  display: flex;
   align-items: center;
-  background: #e8e8e8;
-  padding: 10px;
-  margin-top: 2px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .avatarSmall {
@@ -90,6 +97,7 @@ nav {
 .RowTitle {
   align-items: center;
   justify-content: space-between;
+  padding: 10px 30px;
 }
 
 .add {
@@ -121,6 +129,7 @@ nav {
   height: 50px;
   border-radius: 50%;
 }
+
 .E-Bike {
   background: rgb(252, 84, 84);
   background-size: cover;
@@ -129,6 +138,7 @@ nav {
   height: 50px;
   border-radius: 50%;
 }
+
 .Car {
   background: rgb(172, 158, 211);
   background-image: url(./Images/noun_Car\ Blank_461761.png);
@@ -137,8 +147,24 @@ nav {
   height: 50px;
   border-radius: 50%;
 }
+
+.order__Title {
+  background: white;
+  padding: 10px;
+  box-shadow: 1px 1px 10px #00000023;
+  justify-content: space-between;
+}
+
 .order__id {
-  background: grey;
-  border-radius: 50%;
-  padding: 5px;
+  font-weight: bold;
+}
+
+.orderBox {
+  background: #D6F4FF;
+  padding: 10px;
+  font-size: 0.8em;
+}
+
+.order__List {
+  padding: 20px;
 }

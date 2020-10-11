@@ -16,23 +16,19 @@ function RoutesComponent() {
     }, [])
 
     return (
-
         <div>
-            <div className="flex">
-                <div id="a_Row">
-                    <div className="RowTitle flex">
-                        <h2>Routes</h2>
-                        <div className="add">+</div>
-                        </div>
-                    <ul>
-                        {routes.map((routes) =>
-                            <li className="list__Item" key={routes.id}>
-                                {routes.Title}
-                            </li>
-                        )}
-                    </ul>
-                </div>
+            <div className="RowTitle flex">
+                <h2>Routes</h2>
+                <div className="add">+</div>
             </div>
+            <ul>
+                {routes.map((routes) =>
+                    <li className="list__Item" key={routes.id}>
+                        {routes.Title}
+                    </li>
+                )}
+            </ul>
+
         </div>
     )
 }

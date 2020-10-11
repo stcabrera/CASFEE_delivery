@@ -11,10 +11,10 @@ function Drivers() {
 
         <div>
             <div className="flex">
-                <div id="a_Row">
+                <div className="row">
                     <DriversComponent />
                 </div>
-                <div id="b_Row">
+                <div className="row">
                     <RoutesComponent />
                 </div>
                 <div id="c_Row"><div className="responsive_map">
