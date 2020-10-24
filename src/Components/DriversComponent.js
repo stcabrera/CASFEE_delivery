@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import firebase from '../lib/firebase';
+import db from '../lib/firebase';
 
 function DriversComponent() {
     const [drivers, setDrivers] = useState([]);
 
     useEffect(() => {
-        firebase.firestore().collection('Users').onSnapshot((snapshot) => {
+        db.collection('Users').onSnapshot((snapshot) => {
             const newDriver = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()

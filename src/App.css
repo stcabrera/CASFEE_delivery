@@ -28,6 +28,11 @@ ul {
   display: flex;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
 .row {
   box-shadow: 1px 1px 10px #aaaaaa;
   height: 100vh;
@@ -205,19 +210,17 @@ button:focus {
 }
 
 .delete {
-  color: red;
-  background: white;
+  color: rgb(255, 66, 66);
   cursor: pointer;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  text-align: center;
+  text-align: center; 
+  border: none
 }
 
 
 .iconBox {
-  border-radius: 10px;
-  box-shadow: inset 1px 1px 3px #bcbcbc;
   padding: 5px;
-  background: white;
+}
+.marker {
+  font-size: 3em;
+  color: red;
 }

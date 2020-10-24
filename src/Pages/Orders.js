@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/OrdersComponent';
-//import InitMap from '../Components/OrdersMap';
+import SimpleMap from '../Components/OrdersMap';
 
 /*function Orders() {
     return (
@@ -41,7 +41,7 @@ function Orders() {
                     <RoutesComponent />
                 </div>
                 <div id="c_Row">
-                    
+                    <SimpleMap />
                 </div>
             </div>
         </div>

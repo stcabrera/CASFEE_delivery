@@ -18,21 +18,23 @@ function RoutesComponent() {
     }, []);
 
     const openAddRoute = () => {
-        console.log('add Route ausgelöst')
         db.collection('Routes').add({
             Title: 'New Route'
         })
         setRoutes([...routes])
     }
 
+    const editRoute = () => {
+        console.log('edit Route ausgelöst');
+    }
+
     return (
         <div>
             <div className="RowTitle flex">
                 <h2>Routes</h2>
-                <button className="add">
+                <button className="add" onClick={openAddRoute}>
                     <FontAwesomeIcon
                         icon={faPlus}
-                        onClick={openAddRoute}
                     />
                 </button>
             </div>
@@ -41,8 +43,16 @@ function RoutesComponent() {
                     <li className="list__Item route flex" key={routes.id}>
                         <div> {routes.Title} </div>
                         <div className="iconBox flex">
-                            <div className="icon"> <FontAwesomeIcon icon={faEdit} /> </div>
-                            <div className="icon delete"> <FontAwesomeIcon icon={faTrashAlt} /> </div>
+                            <div className="icon">
+                                <FontAwesomeIcon
+                                    icon={faEdit}
+                                    onClick={editRoute}
+                                /> </div>
+                            <button className="icon delete" onClick={event => db.collection('Routes').doc(routes.id).delete()}>
+                                <FontAwesomeIcon
+                                    icon={faTrashAlt}
+                                />
+                            </button>
                         </div>
                     </li>
                 )}
