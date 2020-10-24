@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const config = {
   method: 'get',
@@ -15,23 +14,19 @@ function GetOrders() {
 
   useEffect(() => {
     (async function getOrders() {
-      const response = await axios
-        .get('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
-        .catch((err) => console.log('Error: ', err));
-        
-      if (response && response.data)
-        setOrders(response.data)
+      fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setOrders(data)
+        });
     })();
   }, []);
-
-  console.log(orders)
-
 
   return (
     <div>
       <div className="RowTitle flex">
         <h2>Orders</h2>
-        <div className="add">+</div>
       </div>
       <ul className="order__List">
         {!noOrders && orders.map((orders) => (

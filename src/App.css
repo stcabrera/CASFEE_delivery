@@ -2,7 +2,22 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #8f8f8f;
+}
+
+body {
+  color: #929292;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: white
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dae0e2;
 }
 
 ul {
@@ -15,8 +30,10 @@ ul {
 
 .row {
   box-shadow: 1px 1px 10px #aaaaaa;
-  height: calc(100vh - 60px);
+  height: 100vh;
   width: 300px;
+  padding-top: 70px;
+  overflow-y: scroll;
 }
 
 .a_row {
@@ -40,11 +57,11 @@ ul {
   height: 60px;
   box-shadow: 1px 1px 10px #bfbfbf;
   width: 100%;
-  position: relative;
+  position: absolute;
   justify-content: space-between;
   padding: 10px;
   z-index: 9999;
-  background: white;
+  background: #ffffff;
 }
 
 nav {
@@ -84,7 +101,6 @@ nav {
 .list__Item {
   align-items: center;
   margin-top: 10px;
-  cursor: pointer;
 }
 
 .avatarSmall {
@@ -105,6 +121,7 @@ nav {
   padding: 10px;
   font-weight: bold;
   cursor: pointer;
+  border: none;
 }
 
 #map {
@@ -151,8 +168,8 @@ nav {
 .order__Title {
   background: white;
   padding: 10px;
-  box-shadow: 1px 1px 10px #00000023;
   justify-content: space-between;
+  border: 1px solid #d6f4ff;
 }
 
 .order__id {
@@ -167,4 +184,40 @@ nav {
 
 .order__List {
   padding: 20px;
+}
+
+.route {
+  background: #d6f4ff;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.listWrapper {
+  padding: 10px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.icon {
+  padding: 5px;
+}
+
+.delete {
+  color: red;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+
+.iconBox {
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 3px #bcbcbc;
+  padding: 5px;
+  background: white;
 }
