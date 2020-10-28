@@ -40,20 +40,26 @@ function RoutesComponent() {
             </div>
             <ul className="listWrapper">
                 {routes.map((routes) =>
-                    <li className="list__Item route flex" key={routes.id}>
-                        <div> {routes.Title} </div>
-                        <div className="iconBox flex">
-                            <div className="icon">
-                                <FontAwesomeIcon
-                                    icon={faEdit}
-                                    onClick={editRoute}
-                                /> </div>
-                            <button className="icon delete" onClick={event => db.collection('Routes').doc(routes.id).delete()}>
-                                <FontAwesomeIcon
-                                    icon={faTrashAlt}
-                                />
-                            </button>
+                    <li className="list__Item" key={routes.id}>
+                        <div className="route flex">
+                            <div> {routes.Title} </div>
+                            <div className="iconBox flex">
+                                <div className="icon">
+                                    <FontAwesomeIcon
+                                        icon={faEdit}
+                                        onClick={editRoute}
+                                    /> </div>
+                                <button className="icon delete" onClick={event => db.collection('Routes').doc(routes.id).delete()}>
+                                    <FontAwesomeIcon
+                                        icon={faTrashAlt}
+                                    />
+                                </button>
+                            </div>
                         </div>
+                        <div className="routeDetails">
+
+                        </div>
+
                     </li>
                 )}
             </ul>

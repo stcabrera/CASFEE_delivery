@@ -14,7 +14,7 @@ function GetOrders() {
 
   useEffect(() => {
     (async function getOrders() {
-      fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
+      await fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
         .then(response => response.json())
         .then(data => {
           console.log(data);

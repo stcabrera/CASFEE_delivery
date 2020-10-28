@@ -4,7 +4,6 @@ import Marker from '../Components/Marker';
 
 
 function SimpleMap(props) {
-
     const center = {
         lat: 47.376888,
         lng: 8.541694
@@ -12,7 +11,7 @@ function SimpleMap(props) {
     const zoom = 11;
 
     return (
-        <div style={{ height: '100vh', width: '100%' }}>
+        <div style={{ height: '70vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyC2hYFMzz1UXGgTNiLBwdWAGAy8Y2hIpx8' }}
                 defaultCenter={center}
@@ -26,7 +25,6 @@ function SimpleMap(props) {
             </GoogleMapReact>
         </div>
     );
-
 }
 
 export default SimpleMap;

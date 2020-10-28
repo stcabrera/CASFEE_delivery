@@ -3,6 +3,7 @@ import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/OrdersComponent';
 import SimpleMap from '../Components/OrdersMap';
+import DriversComponent from '../Components/DriversComponent';
 
 /*function Orders() {
     return (
@@ -42,6 +43,9 @@ function Orders() {
                 </div>
                 <div id="c_Row">
                     <SimpleMap />
+                    <div className="driverBox">
+                        <DriversComponent />
+                    </div>
                 </div>
             </div>
         </div>

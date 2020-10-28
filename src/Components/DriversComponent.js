@@ -15,28 +15,27 @@ function DriversComponent() {
         })
     }, [])
 
+ 
+
     return (
         <div>
-                <div className="RowTitle flex">
-                <h2>Drivers</h2>
-                        <div className="add">+</div>
+            <div className="RowTitle flex">
+            </div>
+
+            <ul>
+                {drivers.map((drivers) =>
+                    <li className="list__Item driversList flex" key={drivers.id}>
+                        <div className="avatarSmall">
+                            <div className={drivers.Vehicle}>
+                            </div>
                         </div>
-                    
-                    <ul>
-                        {drivers.map((drivers) =>
-                            <li className="list__Item" key={drivers.id}>
-                                <div className="avatarSmall">
-                                    <div className={drivers.Vehicle}>
-                                      
-                                    </div>
-                                </div>
-                                <div className="Title__Medium">
-                                    <p>{drivers.FirstName}</p>
-                                    <p>{drivers.LastName}</p>
-                                    </div> 
-                            </li>
-                        )}
-                    </ul>
+                        <div className="Title__Medium">
+                            {drivers.FirstName}
+                            {drivers.LastName}
+                        </div>
+                    </li>
+                )}
+            </ul>
 
         </div>
     )
