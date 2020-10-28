@@ -28,6 +28,10 @@ ul {
   display: flex;
 }
 
+.spaceBetween {
+  justify-content: space-between;
+}
+
 button {
   background: none;
   border: none;
@@ -235,4 +239,12 @@ button:focus {
 .routeDetails {
   background: #515050;
   height: 50px;
+}
+
+.accept {
+  background: #029002;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #494949;
 }

@@ -11,56 +11,52 @@ const config = {
 function NewOrders() {
     const [orders, setOrders] = useState([]);
     const noOrders = !orders || (orders && orders.length === 0);
-    let newOrder = []
+    let newOrder = [];
     useEffect(() => {
         (async function getOrders() {
             await fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     data.map(function (newData) {
-                        
-                        if(newData.status === 'on-hold') {
+
+                        if (newData.status === 'on-hold') {
                             newOrder.push(newData)
-                            console.log(newOrder)
                         }
-                    }
-                    )
+                    })
                     setOrders(newOrder)
                 });
         })();
-    }, []);
+    });
 
+    return (
+        <div>
+            <ul className="order__List">
 
+                {!noOrders && orders.map((orders) => (
 
-        return (
-            <div>
-                <div className="RowTitle flex">
-                    <h2>Orders</h2>
-                </div>
-                <ul className="order__List">
-
-                    {!noOrders && orders.map((orders) => (
-                        
-                        <li className="list__Item" key={orders.id}>
-                            <div className="order__Title flex">
-                                <div className="order__id">#{orders.id}</div>
-                                <div className="order__Time">{orders.date_created}</div>
+                    <li className="list__Item" key={orders.id}>
+                        <div className="order__Title flex">
+                            <div className="order__id">#{orders.id}</div>
+                            <div className="order__Time">{orders.date_created}</div>
+                        </div>
+                        <div className="orderBox">
+                            <div className="flex spaceBetween">
+                                <div>{orders.status}</div>
+                                <button className="accept">accept</button>
                             </div>
-    
-                            <div className="orderBox">
-                                <div className="flex">
-                    <div>{orders.status}</div>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )
-    
+                        </div>
+                    </li>
+                ))}
 
-    
+                {orders.length === 0 && (
+                    <div>No new Orders</div>
+                )}
+            </ul>
+        </div>
+    )
+
+
+
 }
 
 export default NewOrders

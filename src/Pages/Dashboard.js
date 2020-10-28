@@ -4,10 +4,13 @@ import NewOrders from '../Components/NewOrders';
 
 
 function Dashboard() {
-    return(
+    return (
         <div>
-            <h1>Home</h1>
-            <NewOrders />
+            <div className="flex">
+                <div className="row a_row">
+                    <NewOrders />
+                </div>
+            </div>
         </div>
     )
 }
