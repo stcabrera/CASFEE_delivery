@@ -1,58 +1,61 @@
 import React, { useEffect, useState } from 'react';
+import NewOrders from '../Components/NewOrders';
+import db from '../lib/firebase';
 
-const config = {
-  method: 'get',
-  url: 'https://testshop.cabrera.media//wp-json/wc/v2/orders/',
-  headers: {
-    'Authorization': 'Basic Y2tfNzc1YjhmNTE1MGQzYWE2MWU0OGFkMDFhYzJhN2VhYWMxMzhmODUwODpjc180ZmEyOGE5MGNlMjY5ZjY1NTBmNzVhN2ZjN2VhYTRmYmE1ZWQxOTQ0'
-  }
-};
+
+
 
 function GetOrders() {
+  
   const [orders, setOrders] = useState([]);
   const noOrders = !orders || (orders && orders.length === 0);
 
-  useEffect(() => {
-    (async function getOrders() {
-      await fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          setOrders(data)
-        });
-    })();
-  }, []);
+    useEffect(() => {
+        db.collection('Orders').onSnapshot((snapshot) => {
+          setOrders(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+                
+            })))
+            
+        })
+    }, []);
 
-  return (
-    <div>
+    return (
+      <div>
       <div className="RowTitle flex">
         <h2>Orders</h2>
       </div>
-      <ul className="order__List">
+      
+      <div className="order__List">
+      <NewOrders />
+      <ul>
         {!noOrders && orders.map((orders) => (
           <li className="list__Item" key={orders.id}>
             <div className="order__Title flex">
               <div className="order__id">#{orders.id}</div>
               <div className="order__Time">{orders.date_created}</div>
+              
             </div>
 
             <div className="orderBox">
               <div className="flex">
-                <div>{orders.billing.first_name}</div>
-                <div>{orders.billing.last_name}</div>
+                <div>{orders.firstName}</div>
+                <div>{orders.lastName}</div>
               </div>
 
-              <div>{orders.billing.address_1}</div>
-              <div>{orders.billing.postcode}</div>
-              <div>{orders.billing.city}</div>
+              <div>{orders.adress}</div>
+              <div>{orders.postcode}</div>
+              <div>{orders.city}</div>
               <div>{orders.total} CHF</div>
-              <div>{orders.payment_method_title}</div>
+              <div>{orders.paymentMethod}</div>
             </div>
           </li>
         ))}
-      </ul>
+      </ul></div>
     </div>
-  )
+    )
 }
 
 export default GetOrders
+

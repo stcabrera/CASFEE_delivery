@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import db from '../lib/firebase';
 
-const shopUrl = process.env.SHOP_URL;
+
+const shopUrl = process.env.REACT_APP_SHOP_URL;
 const config = {
     method: 'get',
     headers: {
-        'Authorization': process.env.SHOP_API
+        'Authorization': process.env.REACT_APP_SHOP_API
     }
 };
+
 
 function NewOrders() {
     const [orders, setOrders] = useState([]);
@@ -26,10 +29,13 @@ function NewOrders() {
                 });
         })();
     });
+    
+
+   
 
     return (
         <div>
-            <ul className="order__List">
+            <ul>
 
                 {!noOrders && orders.map((orders) => (
 
@@ -41,7 +47,18 @@ function NewOrders() {
                         <div className="orderBox">
                             <div className="flex spaceBetween">
                                 <div>{orders.status}</div>
-                                <button className="accept">accept</button>
+                                <button className="accept" onClick={
+                                  
+                                    event => db.collection('Orders').add({
+                                    firstName: orders.billing.first_name + ' ',
+                                    lastName: orders.billing.last_name,
+                                    adress: orders.billing.address_1,
+                                    postcode: orders.billing.postcode,
+                                    city: orders.billing.city,
+                                    total: orders.total,
+                                    paymentMethod: orders.payment_method_title
+                                })
+                             }>accept</button>
                             </div>
                         </div>
                     </li>

@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = firebase.initializeApp({
-    apiKey: "AIzaSyD5eL0FbYp6AETS8m_DOO-Kql4zdIH07l",
+    apiKey: process.env.REACT_APP_FIREBASE_API,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
     projectId: "delivery-e1053",

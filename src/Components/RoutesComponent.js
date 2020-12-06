@@ -26,6 +26,8 @@ function RoutesComponent() {
 
     const editRoute = () => {
         console.log('edit Route ausgelöst');
+        console.log(process.env.REACT_APP_FIREBASE_API);
+
     }
 
     return (
