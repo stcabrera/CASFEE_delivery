@@ -5,10 +5,16 @@ import NewOrders from '../Components/NewOrders';
 
 function Dashboard() {
     return (
-        <div>
+        <div className="bodyWrapper">
             <div className="flex">
                 <div className="row a_row">
                     <NewOrders />
+                </div>
+                <div className="row big_row">
+                    blub
+                </div>
+                <div className="row big_row">
+                    blub
                 </div>
             </div>
         </div>

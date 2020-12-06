@@ -7,7 +7,9 @@
 body {
   color: #929292;
 }
-
+.bodyWrapper {
+  margin-left: 50px;
+}
 ::-webkit-scrollbar {
   width: 0.3em;
 }
@@ -58,6 +60,10 @@ button {
   flex-grow: 3;
 }
 
+.big_row {
+  flex-grow: 2;
+}
+
 #header {
   height: 60px;
   box-shadow: 1px 1px 10px #272727;
@@ -74,6 +80,15 @@ nav {
   z-index: 999999;
 }
 
+.fixMenu {
+  position: fixed;
+  width: 50px;
+  height: 100vh;
+  top: 60px;
+  left: 0;
+  background: #2b2b2b;
+  z-index: 9;
+}
 .burger {
   font-size: 1.2em;
   cursor: pointer;
@@ -86,6 +101,7 @@ nav {
   height: 100%;
   left: 0;
   top: 60px;
+  z-index: 99;
 }
 
 .navItem a {
@@ -221,7 +237,7 @@ button:focus {
 
 .marker {
   font-size: 3em;
-  color: red;
+  color: yellow;
 }
 
 .driverBox {

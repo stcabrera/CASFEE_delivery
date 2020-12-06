@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+const shopUrl = process.env.SHOP_URL;
 const config = {
     method: 'get',
-    url: 'https://testshop.cabrera.media//wp-json/wc/v2/orders/',
     headers: {
-        'Authorization': 'Basic Y2tfNzc1YjhmNTE1MGQzYWE2MWU0OGFkMDFhYzJhN2VhYWMxMzhmODUwODpjc180ZmEyOGE5MGNlMjY5ZjY1NTBmNzVhN2ZjN2VhYTRmYmE1ZWQxOTQ0'
+        'Authorization': process.env.SHOP_API
     }
 };
 
@@ -14,11 +14,10 @@ function NewOrders() {
     let newOrder = [];
     useEffect(() => {
         (async function getOrders() {
-            await fetch('https://testshop.cabrera.media//wp-json/wc/v2/orders/', config)
+            await fetch(shopUrl, config)
                 .then(response => response.json())
                 .then(data => {
-                    data.map(function (newData) {
-
+                    data.map(newData => {
                         if (newData.status === 'on-hold') {
                             newOrder.push(newData)
                         }

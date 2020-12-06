@@ -3,7 +3,7 @@ import React from 'react';
 import '../App.css';
 import DriversComponent from '../Components/DriversComponent';
 import RoutesComponent from '../Components/RoutesComponent';
-import RoutesMap from '../Components/RoutesMap';
+import RoutesMap from '../Components/Map/RoutesMap';
 
 function Drivers() {
 

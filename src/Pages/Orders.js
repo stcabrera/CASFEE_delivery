@@ -2,12 +2,12 @@ import React from 'react';
 import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/OrdersComponent';
-import SimpleMap from '../Components/OrdersMap';
+import SimpleMap from '../Components/Map/OrdersMap';
 import DriversComponent from '../Components/DriversComponent';
 
 function Orders() {
     return (
-        <div>
+        <div className="bodyWrapper">
             <div className="flex">
                 <div className="row a_row">
                     <GetOrders />

@@ -3,17 +3,18 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = firebase.initializeApp({
-    apiKey: "AIzaSyD5eL0FbYp6AETS8m_DOO-Kql4zdIH07lA",
-    authDomain: "delivery-e1053.firebaseapp.com",
-    databaseURL: "https://delivery-e1053.firebaseio.com",
+    apiKey: "AIzaSyD5eL0FbYp6AETS8m_DOO-Kql4zdIH07l",
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
     projectId: "delivery-e1053",
-    storageBucket: "delivery-e1053.appspot.com",
-    messagingSenderId: "87572494899",
-    appId: "1:87572494899:web:2136e3c814e853e112c146"
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
 
 
 const db = firebaseConfig.firestore();
 
-export default db;
+export const auth = firebaseConfig.auth()
+export default db
 
