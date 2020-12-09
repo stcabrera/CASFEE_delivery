@@ -1,13 +1,21 @@
 import React, { useRef, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl'; import '../App.css';
+import mapboxgl from 'mapbox-gl'; 
+import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/OrdersComponent';
 import DriversComponent from '../Components/DriversComponent';
+import GetAdresses from '../Components/Map/Coordinates';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 
+let locations = [
+    [8.568986, 47.363136],
+    [8.555, 47.36],
+    [8.55, 47.38]
+];
 
+console.log(GetAdresses());
 
 function Orders() {
     const mapContainerRef = useRef(null);
@@ -20,11 +28,6 @@ function Orders() {
             zoom: 13,
         });
 
-        const locations = [
-            [8.53, 47.37],
-            [8.555, 47.36],
-            [8.55, 47.38]
-        ];
         locations.forEach(function(coords) {
             new mapboxgl.Marker().setLngLat(coords).addTo(map);
         });
@@ -33,6 +36,7 @@ function Orders() {
 
         return () => map.remove();
 
+        
 
     }, []);
 

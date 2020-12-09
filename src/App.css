@@ -45,7 +45,8 @@ button {
 .row {
   box-shadow: 1px 1px 10px #343434;
   height: 100vh;
-  width: 300px;
+  width: 20%;
+  max-width: 300px;
   padding-top: 70px;
   background: #454545;
 }
@@ -273,8 +274,7 @@ button:focus {
 }
 
 .marker {
-  background-image: url('./Images/noun_Bike_1950231.png');
-  background-size: cover;
+
   width: 24px;
   height: 24px;
   border-radius: 50%;
