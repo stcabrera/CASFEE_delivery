@@ -8,6 +8,7 @@ import Dashboard from './Pages/Dashboard';
 
 function App() {
   return (
+       
     <Router>
       <Header />
       <Route path="/" exact component={Dashboard} />

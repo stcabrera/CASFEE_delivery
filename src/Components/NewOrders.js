@@ -23,7 +23,9 @@ function NewOrders() {
                     data.map(newData => {
                         if (newData.status === 'on-hold') {
                             newOrder.push(newData)
+                            
                         }
+                        return(newOrder);
                     })
                     setOrders(newOrder)
                 });

@@ -7,9 +7,11 @@
 body {
   color: #929292;
 }
+
 .bodyWrapper {
   margin-left: 50px;
 }
+
 ::-webkit-scrollbar {
   width: 0.3em;
 }
@@ -89,6 +91,7 @@ nav {
   background: #2b2b2b;
   z-index: 9;
 }
+
 .burger {
   font-size: 1.2em;
   cursor: pointer;
@@ -262,4 +265,18 @@ button:focus {
   cursor: pointer;
   border-radius: 10px;
   color: #494949;
+}
+
+.map-container {
+  width: 100%;
+  height: 70vh;
+}
+
+.marker {
+  background-image: url('./Images/noun_Bike_1950231.png');
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }
