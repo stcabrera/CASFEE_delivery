@@ -1,6 +1,6 @@
 import React from 'react';
 import '../index.css';
-import NewOrders from '../Components/NewOrders';
+import NewOrders from '../Components/Orders/NewOrders';
 
 
 function Dashboard() {

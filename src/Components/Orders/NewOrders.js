@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import db from '../lib/firebase';
-
+import db from '../../lib/firebase';
+import ChangeStatus from '../Orders/ChangeStatus'
 
 const shopUrl = process.env.REACT_APP_SHOP_URL;
 const config = {
@@ -9,7 +9,6 @@ const config = {
         'Authorization': process.env.REACT_APP_SHOP_API
     }
 };
-
 
 function NewOrders() {
     const [orders, setOrders] = useState([]);
@@ -21,28 +20,15 @@ function NewOrders() {
                 .then(response => response.json())
                 .then(data => {
                     data.map(newData => {
-                        if (newData.status === 'on-hold') {
+                        if (newData.status === 'processing') {
                             newOrder.push(newData)
-
                         }
                         return (newOrder);
                     })
                     setOrders(newOrder)
                 });
         })();
-    }, []);
-
-    console.log(orders)
-    let adress;
-    let city;
-    let postcode;
-    orders.map((orders) => (
-        adress = orders.billing.address_1,
-        city = orders.billing.city,
-        postcode = orders.billing.postcode
-
-    ))
-
+    });
 
     function readOrder(event) {
         let lat;
@@ -53,9 +39,10 @@ function NewOrders() {
             postcode = event.target.parentElement.parentElement.parentElement.dataset.postcode,
             city = event.target.parentElement.parentElement.parentElement.dataset.city,
             total = event.target.parentElement.parentElement.parentElement.dataset.total,
-            paymentmethod = event.target.parentElement.parentElement.parentElement.dataset.payment;
+            paymentmethod = event.target.parentElement.parentElement.parentElement.dataset.payment,
+            ordernumber = event.target.parentElement.parentElement.parentElement.dataset.ordernumber
 
-        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + adress + ' ' + postcode + ' ' + city + ' switzerland.json?access_token=pk.eyJ1Ijoic2NhYnJlcmEyMiIsImEiOiJja2loZjFsM2Iwb2I1MndtcXlyMDV5OTZkIn0.ZRIdJnMHQupwixDPbyebTA')
+        fetch(process.env.REACT_APP_MAPBOX_GEOCODING + adress + ' ' + postcode + ' ' + city + ' switzerland.json?access_token=' + process.env.REACT_APP_MAPBOX_ACCESS_TOKEN)
             .then(response => response.json())
             .then(data => {
                 lat = data.features[0].center[0]
@@ -73,18 +60,38 @@ function NewOrders() {
                     longitude: long
                 })
             })
+            .then(setTimeout(() => {
+                const myHeaders = new Headers();
+                myHeaders.append("Authorization", "Basic Y2tfNzc1YjhmNTE1MGQzYWE2MWU0OGFkMDFhYzJhN2VhYWMxMzhmODUwODpjc180ZmEyOGE5MGNlMjY5ZjY1NTBmNzVhN2ZjN2VhYTRmYmE1ZWQxOTQ0");
+                myHeaders.append("Content-Type", "application/json");
+                
+                console.log(ordernumber);
+                    
+                const config = {
+                  method: 'PUT',
+                  headers: myHeaders,
+                  body: JSON.stringify({"status":"on-hold"}),
+                  redirect: 'follow'
+                };
+                
+                
+                fetch("https://testshop.cabrera.media//wp-json/wc/v2/orders/" + ordernumber, config)
+                  .catch(error => console.log('error', error));
+                window.location.reload();
+            }, 500))
             .catch(error => console.log('error', error));
+
+
+
     }
 
     return (
         <div>
             <ul>
-
                 {!noOrders && orders.map((orders) => (
-
-
                     <li className="list__Item"
                         key={orders.id}
+                        data-ordernumber={orders.id}
                         data-firstname={orders.billing.first_name}
                         data-lastname={orders.billing.last_name}
                         data-adress={orders.billing.address_1}
@@ -101,19 +108,6 @@ function NewOrders() {
                             <div className="flex spaceBetween">
                                 <div>{orders.status}</div>
                                 <button className="accept" onClick={readOrder}
-
-                                /*
-                                event => db.collection('Orders').add({
-                                    firstName: orders.billing.first_name + ' ',
-                                    lastName: orders.billing.last_name,
-                                    adress: orders.billing.address_1,
-                                    postcode: orders.billing.postcode,
-                                    city: orders.billing.city,
-                                    total: orders.total,
-                                    paymentMethod: orders.payment_method_title,
-                                   
-                                })
-                                */
                                 >accept</button>
                             </div>
                         </div>
@@ -122,6 +116,7 @@ function NewOrders() {
 
                 {orders.length === 0 && (
                     <div>No new Orders</div>
+
                 )}
             </ul>
         </div>

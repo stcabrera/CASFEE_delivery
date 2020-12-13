@@ -3,7 +3,6 @@ import React from 'react';
 import '../App.css';
 import DriversComponent from '../Components/DriversComponent';
 import RoutesComponent from '../Components/RoutesComponent';
-import RoutesMap from '../Components/Map/RoutesMap';
 
 function Drivers() {
 
@@ -18,7 +17,6 @@ function Drivers() {
                     <RoutesComponent />
                 </div>
                 <div id="c_Row"><div className="responsive_map">
-                    <RoutesMap />
                 </div>
                 </div>
             </div>
