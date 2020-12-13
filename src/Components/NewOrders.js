@@ -40,26 +40,41 @@ function NewOrders() {
         adress = orders.billing.address_1,
         city = orders.billing.city,
         postcode = orders.billing.postcode
-        
+
     ))
-    console.log(adress)
 
-    let lat;
-    let long;
 
-    fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + adress +  ' ' + postcode + ' ' + city + ' switzerland.json?access_token=pk.eyJ1Ijoic2NhYnJlcmEyMiIsImEiOiJja2loZjFsM2Iwb2I1MndtcXlyMDV5OTZkIn0.ZRIdJnMHQupwixDPbyebTA')
-        .then(response => response.json())
-        .then(data => {
-            lat = data.features[0].center[0];
-            long = data.features[0].center[1];
+    function readOrder(event) {
+        let lat;
+        let long;
+        let firstName = event.target.parentElement.parentElement.parentElement.dataset.firstname,
+            lastname = event.target.parentElement.parentElement.parentElement.dataset.lastname,
+            adress = event.target.parentElement.parentElement.parentElement.dataset.adress,
+            postcode = event.target.parentElement.parentElement.parentElement.dataset.postcode,
+            city = event.target.parentElement.parentElement.parentElement.dataset.city,
+            total = event.target.parentElement.parentElement.parentElement.dataset.total,
+            paymentmethod = event.target.parentElement.parentElement.parentElement.dataset.payment;
 
-            console.log(lat + ' ' + long)
-        }
-            
-            
-            )
-        .catch(error => console.log('error', error));
+        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + adress + ' ' + postcode + ' ' + city + ' switzerland.json?access_token=pk.eyJ1Ijoic2NhYnJlcmEyMiIsImEiOiJja2loZjFsM2Iwb2I1MndtcXlyMDV5OTZkIn0.ZRIdJnMHQupwixDPbyebTA')
+            .then(response => response.json())
+            .then(data => {
+                lat = data.features[0].center[0]
+                long = data.features[0].center[1]
 
+                db.collection('Orders').add({
+                    firstName: firstName,
+                    lastName: lastname,
+                    adress: adress,
+                    postcode: postcode,
+                    city: city,
+                    total: total,
+                    paymentMethod: paymentmethod,
+                    latitude: lat,
+                    longitude: long
+                })
+            })
+            .catch(error => console.log('error', error));
+    }
 
     return (
         <div>
@@ -67,7 +82,17 @@ function NewOrders() {
 
                 {!noOrders && orders.map((orders) => (
 
-                    <li className="list__Item" key={orders.id}>
+
+                    <li className="list__Item"
+                        key={orders.id}
+                        data-firstname={orders.billing.first_name}
+                        data-lastname={orders.billing.last_name}
+                        data-adress={orders.billing.address_1}
+                        data-postcode={orders.billing.postcode}
+                        data-city={orders.billing.city}
+                        data-total={orders.total}
+                        data-payment={orders.payment_method_title}
+                    >
                         <div className="order__Title flex">
                             <div className="order__id">#{orders.id}</div>
                             <div className="order__Time">{orders.date_created}</div>
@@ -75,18 +100,21 @@ function NewOrders() {
                         <div className="orderBox">
                             <div className="flex spaceBetween">
                                 <div>{orders.status}</div>
-                                <button className="accept" onClick={
+                                <button className="accept" onClick={readOrder}
 
-                                    event => db.collection('Orders').add({
-                                        firstName: orders.billing.first_name + ' ',
-                                        lastName: orders.billing.last_name,
-                                        adress: orders.billing.address_1,
-                                        postcode: orders.billing.postcode,
-                                        city: orders.billing.city,
-                                        total: orders.total,
-                                        paymentMethod: orders.payment_method_title
-                                    })
-                                }>accept</button>
+                                /*
+                                event => db.collection('Orders').add({
+                                    firstName: orders.billing.first_name + ' ',
+                                    lastName: orders.billing.last_name,
+                                    adress: orders.billing.address_1,
+                                    postcode: orders.billing.postcode,
+                                    city: orders.billing.city,
+                                    total: orders.total,
+                                    paymentMethod: orders.payment_method_title,
+                                   
+                                })
+                                */
+                                >accept</button>
                             </div>
                         </div>
                     </li>

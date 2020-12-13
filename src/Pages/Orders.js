@@ -4,7 +4,6 @@ import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/OrdersComponent';
 import DriversComponent from '../Components/DriversComponent';
-import GetAdresses from '../Components/Map/Coordinates';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -14,8 +13,6 @@ let locations = [
     [8.555, 47.36],
     [8.55, 47.38]
 ];
-
-console.log(GetAdresses());
 
 function Orders() {
     const mapContainerRef = useRef(null);
