@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const Map = () => {
+let locationsData = localStorage.getItem("Markers");
+let locations = JSON.parse(locationsData);
+
+function Map() {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-    
-    let locationsData = localStorage.getItem("Markers");
-    let locations = JSON.parse(locationsData);
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -19,9 +19,10 @@ const Map = () => {
         zoom: 12
       });
 
+
       locations.forEach(function (coords) {
         new mapboxgl.Marker().setLngLat(coords).addTo(map);
-    });
+      });
 
       map.on("load", () => {
         setMap(map);

@@ -54,6 +54,7 @@ function GetOrders() {
                 <div>{orders.city}</div>
                 <div>{orders.total} CHF</div>
                 <div>{orders.paymentMethod}</div>
+                <button className="icon delete" onClick={event => db.collection('Orders').doc(orders.id).delete()}></button>
               </div>
             </li>
 
