@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import readOrder from '../Orders/ChangeStatus'
+import readOrder from '../Orders/ChangeStatus';
+
 
 const shopUrl = process.env.REACT_APP_SHOP_URL;
 const config = {

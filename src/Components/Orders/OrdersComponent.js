@@ -1,30 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NewOrders from './NewOrders';
 import db from '../../lib/firebase';
+import Orders from './Orders';
 
 function GetOrders() {
 
-  const [orders, setOrders] = useState([]);
+  let orders = Orders();
   const noOrders = !orders || (orders && orders.length === 0);
-
-  useEffect(() => {
-    db.collection('Orders').onSnapshot((snapshot) => {
-      setOrders(snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      })))
-    })
-  }, []);
-
-  let orderData = [];
-  orders.map((order) => {
-    let lat = order.latitude;
-    let lng = order.longitude;
-    let coord = [lat, lng];
-    orderData.push(coord);
-
-    return (localStorage.setItem('Markers', JSON.stringify(orderData)))
-  })
 
   return (
     <div>
@@ -57,7 +39,6 @@ function GetOrders() {
                 <button className="icon delete" onClick={event => db.collection('Orders').doc(orders.id).delete()}></button>
               </div>
             </li>
-
           ))}
         </ul></div>
     </div>

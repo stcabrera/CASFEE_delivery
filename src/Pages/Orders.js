@@ -3,7 +3,7 @@ import '../App.css';
 import RoutesComponent from '../Components/RoutesComponent';
 import GetOrders from '../Components/Orders/OrdersComponent';
 import DriversComponent from '../Components/DriversComponent';
-import Map from '../Components/Map/showMap'
+import ShowMap from '../Components/Map/showMap'
 
 function Orders() {
     return (
@@ -16,7 +16,7 @@ function Orders() {
                     <RoutesComponent />
                 </div>
                 <div id="c_Row">
-                    <Map />
+                    <ShowMap />
                     <div className="driverBox">
                         <DriversComponent />
                     </div>

@@ -1,5 +1,6 @@
 import db from '../../lib/firebase';
 
+
 function readOrder(event) {
     let lat;
     let long;
@@ -46,6 +47,7 @@ function readOrder(event) {
                 .catch(error => console.log('error', error));
         })
         .catch(error => console.log('error', error));
+
 }
 
 export default readOrder
