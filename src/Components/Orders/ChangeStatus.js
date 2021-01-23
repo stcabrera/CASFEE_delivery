@@ -28,7 +28,8 @@ function readOrder(event) {
                 total: total,
                 paymentMethod: paymentmethod,
                 latitude: lat,
-                longitude: long
+                longitude: long,
+                number: ordernumber
             })
         })
         .then(() => {
@@ -43,7 +44,7 @@ function readOrder(event) {
                 redirect: 'follow'
             };
 
-            fetch("https://testshop.cabrera.media/wp-json/wc/v2/orders/" + ordernumber, config)
+            fetch(process.env.REACT_APP_SHOP_URL + ordernumber, config)
                 .catch(error => console.log('error', error));
         })
         .catch(error => console.log('error', error));

@@ -20,7 +20,7 @@ function GetOrders() {
           {!noOrders && orders.map((orders) => (
             <li className="list__Item" key={orders.id}>
               <div className="order__Title flex">
-                <div className="order__id">#{orders.id}</div>
+                <div className="order__id">#{orders.number}</div>
                 <div className="order__Time">{orders.date_created}</div>
 
               </div>

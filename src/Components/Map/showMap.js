@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import GetMarkers from '../Map/Marker';
 
+
 function ShowMap() {
+
   let orders = GetMarkers();
 
   const [map, setMap] = useState(null);
@@ -23,10 +24,13 @@ function ShowMap() {
         orders.forEach((coords) => {
           new mapboxgl.Marker()
             .setLngLat([coords.lat, coords.lng])
-            .setPopup(new mapboxgl.Popup({ offset: 25 })
+            .setPopup(new mapboxgl.Popup({ offset: 30 })
               .setHTML(
+
+                '#' + coords.id + '<br>' +
                 coords.name + '<br>' +
-                coords.adress
+                coords.adress +
+                '<div><button>add to Route</button></div>' 
               ))
             .addTo(map);
         })
@@ -42,7 +46,7 @@ function ShowMap() {
 
     if (!map) initializeMap({ setMap, mapContainer });
 
-  }, [map]);
+  }, [map, orders]);
 
   return <div className="map-container" ref={el => (mapContainer.current = el)} />;
 };

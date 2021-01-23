@@ -3,7 +3,6 @@ import Orders from '../Orders/Orders';
 let orderData = [];
 
 function GetMarkers() {
-
     let orders = Orders();
 
     orders.forEach((order) => {
@@ -11,11 +10,13 @@ function GetMarkers() {
         let lng = order.longitude;
         let adress = order.adress;
         let name = order.firstName + ' ' + order.lastName;
-        let coord ={
+        let id = order.number
+        let coord = {
             lat: lat, 
             lng: lng, 
             adress: adress, 
-            name: name
+            name: name,
+            id: id
         }
         orderData.push(coord);  
     })

@@ -1,20 +1,13 @@
 import React from 'react';
 import '../index.css';
-import NewOrders from '../Components/Orders/NewOrders';
-
+import Signup from '../Components/Security/Signup';
 
 function Dashboard() {
     return (
         <div className="bodyWrapper">
-            <div className="flex">
-                <div className="row a_row">
-                    <NewOrders />
-                </div>
-                <div className="row big_row">
-                    blub
-                </div>
-                <div className="row big_row">
-                    blub
+            <div className="row full_row">
+                <div className="blur">
+                    <Signup />
                 </div>
             </div>
         </div>

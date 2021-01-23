@@ -56,60 +56,28 @@ function Navigation() {
 
 export default Navigation
 */
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { useTransition, animated } from 'react-spring';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navigation() {
-    const [showMenu, setShowMenu] = useState(false);
-    const transitions = useTransition(showMenu, null, {
-        from: { width: 200 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-    });
-
 
     return (
         <nav>
-            <div className="burger">
-                <FontAwesomeIcon
-                    icon={faBars}
-                    onClick={() => setShowMenu(!showMenu)}
-                />
-
-            </div>
             <div className="fixMenu">
-            {
-                transitions.map(({ item, key, props }) =>
-                    item && <animated.div
-                        key={key}
-                        style={props}
-                        id="navigation"
-                        onClick={() => setShowMenu(false)}
-                    >
-                        
-                
-                
-                        <ul>
+                <div>
+                    <ul>
                         <li className="navItem">
-                                <Link to="/" >Dashboard</Link>
-                            </li>
-                            <li className="navItem">
-                                <Link to="orders" >Orders</Link>
-                            </li>
-                            <li className="navItem">
-                                <Link to="drivers" >Drivers</Link>
-                            </li>
-
-
-                        </ul>
-                        
-                    </animated.div>
-                )
-            }</div>
-
+                            <Link to="/" >Da</Link>
+                        </li>
+                        <li className="navItem">
+                            <Link to="orders" >O</Link>
+                        </li>
+                        <li className="navItem">
+                            <Link to="drivers" >D</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     )
 }
